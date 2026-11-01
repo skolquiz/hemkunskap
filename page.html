@@ -82,7 +82,7 @@ img{max-width:100%;height:auto;display:block}
 .numx .ex{margin-top:8px;font-size:14px;opacity:.9;font-style:italic}
 
 /* Område */
-.area-head{display:grid;grid-template-columns:1fr 1.1fr;gap:24px;align-items:center;padding-block:24px 8px}
+.area-head{display:grid;grid-template-columns:1.3fr 1fr;gap:24px;align-items:center;padding-block:24px 8px}
 @media (max-width:720px){.area-head{grid-template-columns:1fr}}
 .area-head img{border-radius:18px;border:1px solid var(--line);width:100%;aspect-ratio:1376/768;object-fit:cover}
 .area-head .eyebrow{font-size:13px;letter-spacing:.08em;text-transform:uppercase;font-weight:800;color:var(--orange)}
@@ -107,7 +107,7 @@ img{max-width:100%;height:auto;display:block}
 .remember .lbl{display:block;margin-bottom:2px;font-weight:900}
 .diagram{margin-top:16px;background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:16px;overflow-x:auto}
 .diagram h3{margin-bottom:8px}
-.diagram svg{width:100%;min-width:520px;height:auto;display:block}
+.diagram>svg{width:100%;min-width:520px;height:auto;display:block}
 .hbars{display:grid;gap:8px}
 .hbars .r{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px;align-items:center;font-size:14px;font-weight:600}
 .hbars .r span:first-child{min-width:0}
@@ -128,9 +128,58 @@ img{max-width:100%;height:auto;display:block}
 .split div{display:grid;place-items:center;text-align:center;padding:0 6px}
 .split .me{flex:1;background:var(--orange);color:#fff}
 .split .co{flex:4;background:var(--ice)}
+/* budget vs kassabok */
+.vs{display:grid;grid-template-columns:1fr auto 1fr;gap:12px;align-items:stretch}
+@media (max-width:600px){.vs{grid-template-columns:1fr}.vs-mid{display:none}}
+.vs>div{border-radius:14px;padding:14px 16px;min-width:0}
+.vs-a{background:var(--ice)}.vs-b{background:var(--orange-soft)}
+.vs-mid{display:grid;place-items:center;padding:0}.vs-mid svg{width:34px;height:34px}
+.vs h4{margin:4px 0 6px;font-size:19px;font-weight:900}
+.vs p{font-size:15px}
+.pill{display:inline-block;font-size:11px;letter-spacing:.08em;font-weight:900;border-radius:999px;padding:2px 10px;background:var(--navy);color:#fff}
+/* skuldtrappa */
+.skuld{display:grid;gap:8px}
+.st{background:var(--ice);border-radius:10px;padding:8px 12px}
+.st-h{display:flex;justify-content:space-between;font-size:15px}
+.st-h span{font-weight:800;color:var(--orange);font-variant-numeric:tabular-nums}
+.st-bar{height:8px;border-radius:999px;background:rgba(31,58,95,.12);margin:6px 0 4px;overflow:hidden}
+.st-bar i{display:block;height:100%;background:var(--orange);border-radius:999px}
+.st small{font-size:13px;color:var(--muted)}
+.skuld-sum{margin-top:10px;font-size:16px}
+/* försäkringsmatris */
+.matrix{display:grid;gap:8px}
+.mrow{display:grid;grid-template-columns:46px 1fr 1fr;gap:12px;align-items:center;background:var(--ice);border-radius:12px;padding:10px 12px}
+@media (max-width:600px){.mrow{grid-template-columns:46px 1fr}.mrow .ma{grid-column:2}}
+.mrow .ic{width:46px;height:46px;border-radius:12px;background:var(--bg);display:grid;place-items:center}.mrow .ic svg{width:28px;height:28px}
+.mrow .ms{font-weight:700;font-size:15px}
+.mrow .ma b{display:block;color:var(--orange)}.mrow .ma span{font-size:13.5px;color:var(--muted)}
+/* betalsätt */
+.pay{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+@media (max-width:860px){.pay{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:480px){.pay{grid-template-columns:1fr}}
+.ptile{background:var(--ice);border-radius:14px;padding:14px;display:flex;flex-direction:column;gap:6px;min-width:0}
+.ptile .ic{width:46px;height:46px;border-radius:12px;background:var(--bg);display:grid;place-items:center}.ptile .ic svg{width:28px;height:28px}
+.ptile h4{margin:0;font-size:17px;font-weight:900}
+.ptile p{font-size:14px;flex:1}
+.badge{align-self:flex-start;font-size:12px;font-weight:800;border-radius:999px;padding:3px 10px}
+.badge.ok{background:var(--ok);color:#fff}.badge.mid{background:var(--navy);color:#fff}.badge.no{background:var(--no);color:#fff}
+/* jämförelsetabell */
+.tblwrap{overflow-x:auto}
+.cmp{border-collapse:collapse;width:100%;min-width:560px;font-size:14.5px}
+.cmp th,.cmp td{padding:9px 10px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line)}
+.cmp thead th{font-size:16px;font-weight:900;color:var(--orange);border-bottom:2px solid var(--navy)}
+.cmp tbody th{font-weight:800;width:150px;color:var(--muted)}
+.cmp td.y{color:var(--ok);font-weight:800}.cmp td.n{color:var(--no);font-weight:800}
+/* vem gör vad */
+.orgs{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+@media (max-width:600px){.orgs{grid-template-columns:1fr}}
+.org{display:flex;gap:12px;background:var(--ice);border-radius:14px;padding:12px 14px;min-width:0}
+.org .ic{flex:0 0 46px;width:46px;height:46px;border-radius:12px;background:var(--bg);display:grid;place-items:center}.org .ic svg{width:28px;height:28px}
+.org h4{margin:0 0 3px;font-size:16px;font-weight:900}.org p{font-size:14px}
 .diagram .cap{font-size:13px;color:var(--muted);margin-top:8px}
 .sv{font-family:var(--font)}
-.list2{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:16px}
+.list2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.list2 h3 svg{width:22px;height:22px}
 @media (max-width:600px){.list2{grid-template-columns:1fr}}
 .list2 div{border-radius:16px;padding:14px 16px;min-width:0}
 .list2 .yes{background:var(--ok-soft)}
@@ -215,6 +264,13 @@ img{max-width:100%;height:auto;display:block}
     <symbol id="i-info" viewBox="0 0 48 48"><circle cx="24" cy="24" r="18" fill="#DCEBF7" stroke="#1F3A5F" stroke-width="2.5"/><path d="M24 21v12" stroke="#1F3A5F" stroke-width="4" stroke-linecap="round"/><circle cx="24" cy="14.5" r="2.5" fill="#E8762B"/></symbol>
     <symbol id="i-bulb" viewBox="0 0 48 48"><path d="M24 5a13 13 0 0 0-7 24v5h14v-5a13 13 0 0 0-7-24z" fill="#FFB071" stroke="#1F3A5F" stroke-width="2.5" stroke-linejoin="round"/><path d="M19 40h10" stroke="#1F3A5F" stroke-width="3" stroke-linecap="round"/></symbol>
     <symbol id="i-shield" viewBox="0 0 48 48"><path d="M24 5l16 6v12c0 10-7 17-16 20C15 40 8 33 8 23V11z" fill="#DCEBF7" stroke="#1F3A5F" stroke-width="2.5" stroke-linejoin="round"/><path d="M16 24l6 6 11-12" fill="none" stroke="#E8762B" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-bike" viewBox="0 0 48 48"><circle cx="12" cy="32" r="8" fill="#DCEBF7" stroke="#1F3A5F" stroke-width="2.5"/><circle cx="36" cy="32" r="8" fill="#DCEBF7" stroke="#1F3A5F" stroke-width="2.5"/><path d="M12 32l8-14h10l6 14M20 18h-5M30 18l-4-6h5" fill="none" stroke="#E8762B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-tv" viewBox="0 0 48 48"><rect x="6" y="9" width="36" height="24" rx="4" fill="#DCEBF7" stroke="#1F3A5F" stroke-width="2.5"/><path d="M16 40h16M24 33v7" stroke="#1F3A5F" stroke-width="2.5" stroke-linecap="round"/><path d="M14 25l6-7 5 5 9-9" fill="none" stroke="#E8762B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-camera" viewBox="0 0 48 48"><rect x="6" y="14" width="36" height="24" rx="4" fill="#DCEBF7" stroke="#1F3A5F" stroke-width="2.5"/><path d="M17 14l3-5h8l3 5" fill="none" stroke="#1F3A5F" stroke-width="2.5" stroke-linejoin="round"/><circle cx="24" cy="26" r="7" fill="#E8762B" stroke="#1F3A5F" stroke-width="2.5"/><circle cx="24" cy="26" r="2.5" fill="#fff"/></symbol>
+    <symbol id="i-bank" viewBox="0 0 48 48"><path d="M6 18L24 8l18 10z" fill="#E8762B" stroke="#1F3A5F" stroke-width="2.5" stroke-linejoin="round"/><path d="M11 18v16M19 18v16M29 18v16M37 18v16" stroke="#1F3A5F" stroke-width="2.5"/><rect x="6" y="34" width="36" height="6" fill="#DCEBF7" stroke="#1F3A5F" stroke-width="2.5"/></symbol>
+    <symbol id="i-hand" viewBox="0 0 48 48"><path d="M4 22l10-8 8 2 6 6-6 6-6-4" fill="#DCEBF7" stroke="#1F3A5F" stroke-width="2.5" stroke-linejoin="round"/><path d="M44 22l-10-8-8 3M22 28l6 6 6-2 6-6 4-2" fill="none" stroke="#1F3A5F" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/><circle cx="24" cy="24" r="4" fill="#E8762B"/></symbol>
+    <symbol id="i-mobile" viewBox="0 0 48 48"><rect x="14" y="5" width="20" height="38" rx="4" fill="#DCEBF7" stroke="#1F3A5F" stroke-width="2.5"/><path d="M21 37h6" stroke="#1F3A5F" stroke-width="2.5" stroke-linecap="round"/><path d="M19 22h10l-4-4M29 22l-4 4" fill="none" stroke="#E8762B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-card" viewBox="0 0 48 48"><rect x="5" y="11" width="38" height="26" rx="4" fill="#DCEBF7" stroke="#1F3A5F" stroke-width="2.5"/><rect x="5" y="17" width="38" height="6" fill="#1F3A5F"/><rect x="11" y="27" width="12" height="4" rx="1" fill="#E8762B"/></symbol>
     <symbol id="i-check" viewBox="0 0 48 48"><circle cx="24" cy="24" r="18" fill="#2E8B57"/><path d="M15 25l6 6 12-13" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
     <symbol id="i-cross" viewBox="0 0 48 48"><circle cx="24" cy="24" r="18" fill="#C0392B"/><path d="M17 17l14 14M31 17L17 31" stroke="#fff" stroke-width="4" stroke-linecap="round"/></symbol>
   </defs>
@@ -234,15 +290,13 @@ const AREAS = [
   blurb:"Konsument, budget, kassabok, sparande och aktier.",
   intro:"Ekonomi betyder hushållning med resurser. Pengar är en begränsad resurs, så inkomsterna måste räcka till månadens alla utgifter.",
   facts:[
-   {ic:"i-cart", h:"Konsument = förbrukare", p:["En konsument köper <b>varor</b> eller <b>tjänster</b> för privat bruk. Konsumtion betyder förbrukning – vi är alla konsumenter.","<b>Vara</b>: något du tar med dig hem (mjölk, cykel, tv). <b>Tjänst</b>: ett arbete någon gör åt dig (klippa gräset, laga bilen)."]},
-   {ic:"i-list", h:"Budget – planen i förväg", p:["I budgeten skriver du upp vilka <b>inkomster</b> och <b>utgifter</b> du räknar med under t.ex. en månad.","<b>Fasta utgifter</b> (hyra, mobil, internet, försäkring) är svåra att påverka. <b>Rörliga utgifter</b> (nöjen, kläder, godis) kan du själv påverka – där sparar du lättast."]},
-   {ic:"i-receipt", h:"Kassabok – facit i efterhand", p:["I kassaboken skriver du upp inkomster och utgifter <b>efter hand</b>. Då ser du vart pengarna tog vägen och om budgeten höll.","Spara alla kvitton så att allt kommer med."]},
-   {ic:"i-pig", h:"Sparande ska alltid ingå", p:["<b>Buffertspara</b> för oväntade utgifter. <b>Målspara</b> till något dyrt du vill köpa – utan att behöva låna.","Inkomst är pengar in (lön, månadspeng, bidrag). <b>Brutto</b> = före skatt, <b>netto</b> = det som är kvar efter skatt."]},
-   {ic:"i-stock", h:"Aktie", p:["En aktie är en <b>del av ett aktiebolag</b>. Går bolaget bra stiger aktien i värde och du tjänar pengar. Går det dåligt förlorar du pengar.","Aktiefonder kan passa den som målsparar på lång sikt – flera år."]},
-   {ic:"i-scale", h:"Balans i ekonomin", p:["Räcker inte pengarna kan du antingen <b>öka inkomsterna</b> (jobba extra, sälja saker) eller <b>minska utgifterna</b>. Det är lättast att minska utgifterna – prioritera!"]}
+   {ic:"i-cart", h:"Konsument = förbrukare", p:["En konsument köper <b>varor</b> eller <b>tjänster</b> för privat bruk. <b>Vara</b>: något du tar med dig hem (mjölk, cykel, tv). <b>Tjänst</b>: ett arbete någon gör åt dig (klippa gräset, laga bilen)."]},
+   {ic:"i-list", h:"Fasta och rörliga utgifter", p:["<b>Fasta</b> (hyra, mobil, internet, försäkring) är svåra att påverka. <b>Rörliga</b> (nöjen, kläder, godis) bestämmer du själv över – där sparar du lättast. Räcker inte pengarna: öka inkomsterna eller minska utgifterna. Det senare är lättast – prioritera."]},
+   {ic:"i-pig", h:"Spara – alltid lite", p:["<b>Buffert</b> för oväntade utgifter, <b>målspar</b> till något dyrt – så slipper du låna. Inkomst = pengar in (lön, månadspeng, bidrag). <b>Brutto</b> före skatt, <b>netto</b> det du får ut."]},
+   {ic:"i-stock", h:"Aktie", p:["En <b>del av ett aktiebolag</b>. Går bolaget bra stiger aktien och du tjänar pengar; går det dåligt förlorar du. Aktiefonder passar den som målsparar på flera års sikt."]}
   ],
-  remember:"Budget gör man <b>först</b> (planen). Kassaboken för man <b>sedan</b> (vad som faktiskt hände). Ett visst sparande ska alltid vara med i budgeten.",
-  diagram:"smakop",
+  remember:"Budget = planen <b>före</b>. Kassabok = facit <b>efter</b>. Spara alltid en del – helst både buffert och mål.",
+  diagram:["budgetkassa","smakop"],
   qs:[
    {n:1, q:"Vad innebär det att vara konsument?", a:"En konsument är en person som köper varor, t.ex. mjölk, cykel eller tv. En tjänst är t.ex. att klippa gräset eller laga bilen.", keys:["köper varor eller tjänster","för privat bruk","vara = sak, tjänst = arbete"]},
    {n:2, q:"Nämn två viktiga hjälpmedel vid ekonomisk planering. Förklara skillnaden mellan dem.", a:"Budget och kassabok. Man gör en budget först – en planering över t.ex. en månad. Sedan för man in sina utgifter i kassaboken, som visar vart pengarna tagit vägen och hur väl man lyckats hålla sin budget.", keys:["budget = plan i förväg","kassabok = skrivs i efterhand","visar om budgeten höll"]},
@@ -258,15 +312,14 @@ const AREAS = [
   blurb:"Ränta, kreditköp, effektiv ränta och skuldfällan.",
   intro:"Ett lån binder upp din framtida ekonomi: du lånar i dag och betalar i framtiden. Det är alltid billigare att betala kontant.",
   facts:[
-   {ic:"i-clock", h:"18 år för att låna", p:["Du måste vara <b>myndig</b> (18 år) för att låna pengar och handla på kredit. Var rädd om din namnteckning – du ansvarar för det du skriver under.","Lån till ren konsumtion väljer man bort. Låna till bostad – och bara om du har råd."]},
-   {ic:"i-percent", h:"Ränta", p:["Ränta är <b>kostnaden för att låna</b> pengar, angiven i procent. Lånet ska också <b>amorteras</b> – betalas tillbaka.","Snabblån och sms-lån kan ha räntor på <b>flera hundra procent</b>. Undvik dem."]},
-   {ic:"i-cart", h:"Kreditköp / avbetalning", p:["Du betalar bara en liten del (handpenning) vid köpet. Resten delas upp i <b>månadsbetalningar med ränta</b>. Det blir dyrare än att betala direkt – du betalar för att låna.","<b>Effektiv ränta</b> = räntan + alla avgifter = den totala kostnaden. Använd den som jämförpris mellan butiker."]},
-   {ic:"i-warn", h:"Betalningsanmärkning", p:["En \"prick\" som visar att du inte skött dina betalningar. Finns kvar i <b>3 år</b> och gör det svårt att få lån, hyra lägenhet, teckna mobilabonnemang – ibland att få jobb."]},
-   {ic:"i-people", h:"Borgen", p:["Att gå i borgen = att <b>lova betala någon annans lån</b> om den personen inte kan. Ett stort ekonomiskt ansvar som kan drabba din egen ekonomi."]},
-   {ic:"i-bulb", h:"Tre ekonomitips", p:["<b>Lär dig spara.</b> <b>Lär dig längta</b> – du behöver inte köpa allt på en gång. <b>Inga små krediter</b> – låna bara till stora köp som bostad, och bara när du har råd.","Behöver du hjälp: kommunens budget- och skuldrådgivning är gratis."]}
+   {ic:"i-percent", h:"Ränta och amortering", p:["<b>Ränta</b> är kostnaden för att låna, i procent. <b>Amortera</b> = betala tillbaka lånet. Du måste vara myndig för att låna – och var rädd om din namnteckning. Snabblån och sms-lån har räntor på <b>flera hundra procent</b>: undvik."]},
+   {ic:"i-cart", h:"Kreditköp och effektiv ränta", p:["Du betalar en liten del (handpenning) vid köpet; resten delas upp i <b>månadsbetalningar med ränta</b>. <b>Effektiv ränta</b> = räntan + alla avgifter = totala kostnaden. Använd den som jämförpris."]},
+   {ic:"i-warn", h:"Betalningsanmärkning", p:["En \"prick\" för obetalda skulder. Finns kvar i <b>3 år</b> och gör det svårt att få lån, hyra lägenhet, teckna abonnemang – ibland att få jobb."]},
+   {ic:"i-people", h:"Borgen", p:["Du <b>lovar betala någon annans lån</b> om den personen inte kan. Ett stort ansvar som kan drabba din egen ekonomi."]},
+   {ic:"i-bulb", h:"Tre ekonomitips", p:["<b>Lär dig spara. Lär dig längta</b> – du behöver inte köpa allt på en gång. <b>Inga små krediter</b> – låna bara till stora köp som bostad, och bara när du har råd. Behöver du hjälp är kommunens budget- och skuldrådgivning gratis."]}
   ],
-  remember:"Effektiv ränta visar vad lånet <b>verkligen</b> kostar. Datorn för 20 000 kr på avbetalning kostar 38 829 kr – inget smart köp.",
-  diagram:"kredit",
+  remember:"Kreditköp = du betalar för att låna; jämför med <b>effektiv ränta</b>. Små skulder växer fort – 100 kr blev 1 580 kr.",
+  diagram:["kredit","skuld"],
   qs:[
    {n:5, q:"Förklara vad en kreditbetalning är.", a:"Kreditbetalning kan man göra när man köper något lite dyrare, t.ex. möbler. Man betalar bara en liten del första gången, sedan delas resten upp i skulder med ränta som betalas månadsvis. På så sätt blir det dyrare än om man hade betalat direkt – du får betala för att låna pengar.", keys:["betala lite först, resten senare","ränta tillkommer","dyrare än att betala direkt"]},
    {n:"E1", x:true, q:"Vad är ränta, och vad betyder det att amortera?", a:"Ränta är kostnaden för att få låna pengar, angiven i procent. Att amortera är att betala tillbaka själva lånet. Ett bostadslån kan ha 30 års amorteringstid, de flesta andra lån kortare.", keys:["ränta = kostnaden för lånet, i procent","amortera = betala tillbaka"]},
@@ -281,15 +334,13 @@ const AREAS = [
   blurb:"Hemförsäkring, självrisk, drulle och produktförsäkring.",
   intro:"En olycka kan bli en personlig katastrof utan försäkring. Jämför pris och villkor innan du väljer – skillnaderna kan vara stora.",
   facts:[
-   {ic:"i-home", h:"Hemförsäkring – viktigast", p:["Skyddar <b>det mesta i hemmet</b>. Vid en skada betalar du en <b>självrisk</b>, försäkringsbolaget betalar resten.","Ingår normalt: <b>ansvarsskydd</b> (om någon kräver skadestånd av dig), överfallsskydd och rättsskydd. Ofta är cykeln försäkrad, ibland ingår reseskydd."]},
-   {ic:"i-phone", h:"Allrisk / drulle", p:["Tillägg till hemförsäkringen för den som är slarvig – t.ex. tappar mobilen i golvet. Kallas också <b>otursförsäkring</b>.","Åldersavdrag kan göras på gamla saker."]},
-   {ic:"i-shield", h:"Produktförsäkring – ofta onödig", p:["Säljaren erbjuder ofta en extra försäkring på tv, mobil eller dator. Men du har alltid <b>3 års reklamationsrätt</b> enligt lag och oftast <b>1 års garanti</b>.","Gäller inte om du själv orsakat skadan."]},
-   {ic:"i-receipt", h:"Garanti vs reklamationsrätt", p:["<b>Garanti</b> = ett frivilligt löfte från säljaren att laga eller byta inom viss tid.","<b>Reklamationsrätt</b> = din lagliga rätt att klaga på fel i 3 år, även utan garanti."]},
-   {ic:"i-warn", h:"Trafikförsäkring", p:["Moped, motorcykel och bil <b>måste</b> enligt lag vara trafikförsäkrade."]},
-   {ic:"i-info", h:"Jämför", p:["Konsumenternas försäkringsbyrå (konsumenternas.se) ger gratis råd och jämför priser och villkor."]}
+   {ic:"i-home", h:"Hemförsäkring – viktigast", p:["Skyddar <b>det mesta i hemmet</b>. Vid en skada betalar du en <b>självrisk</b>, bolaget resten. Ingår normalt: <b>ansvarsskydd</b> (om någon kräver skadestånd av dig), överfallsskydd och rättsskydd. Ofta cykeln, ibland reseskydd."]},
+   {ic:"i-phone", h:"Allrisk / drulle", p:["Tillägg för den som är slarvig – t.ex. tappar mobilen i golvet. Kallas också otursförsäkring. På gamla saker görs <b>åldersavdrag</b>."]},
+   {ic:"i-shield", h:"Produktförsäkring och garanti", p:["Säljaren erbjuder ofta en extra försäkring på tv, mobil eller dator. <b>Garanti</b> är säljarens frivilliga löfte, oftast 1 år. Lagen ger dig redan <b>3 års reklamationsrätt</b> – därför är produktförsäkring ofta onödig. Inget av det gäller om du själv orsakat skadan: då är det drulle."]},
+   {ic:"i-warn", h:"Trafikförsäkring och jämförelse", p:["Moped, motorcykel och bil <b>måste</b> vara trafikförsäkrade. Priserna skiljer mycket mellan bolag – jämför på Konsumenternas försäkringsbyrå (konsumenternas.se)."]}
   ],
-  remember:"Självrisk = den del <b>du</b> betalar själv. Produktförsäkring behövs sällan – lagen ger dig redan 3 års reklamationsrätt.",
-  diagram:"sjalvrisk",
+  remember:"Hemförsäkring först. <b>Självrisk</b> = din del av skadan. Produktförsäkring är sällan värd pengarna.",
+  diagram:["vilkenforsakring"],
   qs:[
    {n:"h", c:true, q:"Gabriella råkar tappa sin kamrats nya videokamera i golvet. Den går sönder och måste repareras för flera tusen kronor.", sub:"Kan kamraten enligt någon lag kräva att få kameran lagad gratis, eller måste Gabriella betala? Finns det någon försäkring som täcker skada av detta slag?", a:"Det finns ingen lag om detta – konsumentlagarna gäller mellan konsument och företag, inte mellan två kompisar. Men Gabriella bör ersätta sin kompis för reparationen. Har Gabriella eller hennes familj en hemförsäkring kan hon ta det med sitt försäkringsbolag, som ersätter skadan. Står Gabriella utan försäkring kan det ofta lösas via kompisens hemförsäkring. Man betalar en självrisk, och det kan bli åldersavdrag om kameran är gammal.", law:"Ingen konsumentlag – hemförsäkringens ansvarsskydd", keys:["ingen lag mellan privatpersoner","hemförsäkring","självrisk","åldersavdrag"], obs:"Lärarens facit kallar försäkringen <i>olycksfallsförsäkring</i>. Boken (s. 123) kallar det <b>ansvarsskydd</b> i hemförsäkringen – skadan på kompisens kamera – och <b>allrisk/drulle</b> för egna saker man tappar. Nämner du båda orden är du säker."},
    {n:"E1", x:true, q:"Vad är en självrisk?", a:"Det belopp du själv betalar vid en skada. Försäkringsbolaget betalar resten. På gamla saker kan det dessutom bli åldersavdrag.", keys:["det du betalar själv","bolaget betalar resten"]},
@@ -303,15 +354,13 @@ const AREAS = [
   blurb:"Sex betalsätt, e-handelslagen, ångerrätt och bluffar.",
   intro:"Näthandel har fler fallgropar än butiksköp. Grundregel: är en vara extremt billig är den oftast en bluff.",
   facts:[
-   {ic:"i-wallet", h:"Sex betalsätt", p:["<b>Faktura</b> – betala när du fått och kollat varan (säkrast). <b>Direktbetalning</b> via banken. <b>Postförskott</b> – betala när du hämtar paketet. <b>Betalningsförmedlare</b> (Payson, PayPal, Klarna) – släpper pengarna först när du fått varan. <b>Swish</b>. <b>Kort/kredit</b> (Visa, Mastercard)."]},
-   {ic:"i-law", h:"E-handelslagen", p:["Säljaren måste ge dig: företagets <b>namn, adress och e-post</b> på webbplatsen; <b>priset tydligt</b> inkl. frakt och skatter; möjlighet att <b>ändra en felaktig beställning</b>; en <b>bekräftelse via e-post</b>; och <b>avtalsvillkor</b> som går att spara."]},
-   {ic:"i-undo", h:"Ångerrätt 14 dagar", p:["Distansavtalslagen ger dig rätt att ångra köp på nätet, via telefon, tv-shop och hemförsäljning inom <b>14 dagar</b>. Du måste <b>meddela företaget</b>, och kan få betala returfrakten. Du får öppna och titta på varan."]},
-   {ic:"i-lock", h:"Kolla upp företaget", p:["Hänglås och <b>https</b> i adressfältet. Trygghetssymboler (Trygg e-handel). Konsumentverkets <b>varningslista</b>. Var misstänksam mot företag som saknar adress eller bara erbjuder förskottsbetalning.","Lämna aldrig kortnummer på en okrypterad sida eller i e-post."]},
-   {ic:"i-clock", h:"18 år", p:["Du måste ha fyllt 18 år för att ingå ett köpeavtal, annars måste målsman godkänna. Jobbar du extra från 16 får du själv bestämma över de pengarna – om du betalar kontant."]},
-   {ic:"i-info", h:"Cookies", p:["Små filer som sajter lägger i din dator – de kan känna igen dig och visa riktad reklam. Enligt lagen om elektronisk kommunikation måste sajter <b>informera</b>, och du kan tacka nej."]}
+   {ic:"i-law", h:"E-handelslagen", p:["Nätbutiken måste visa företagets <b>namn, adress och e-post</b>, ange <b>priset tydligt</b> inkl. frakt, låta dig <b>ändra en felaktig beställning</b>, skicka <b>bekräftelse via e-post</b> och ge dig <b>avtalsvillkor</b> som går att spara."]},
+   {ic:"i-lock", h:"Kolla upp företaget", p:["Hänglås och <b>https</b> i adressfältet, trygghetssymboler (Trygg e-handel) och Konsumentverkets <b>varningslista</b>. Välj bort företag som saknar adress eller bara tar förskottsbetalning. Lämna aldrig kortnummer okrypterat eller i e-post. Extremt billigt = oftast bluff."]},
+   {ic:"i-undo", h:"Ångerrätt 14 dagar", p:["Köp på distans kan ångras inom 14 dagar – <b>meddela företaget</b>, och räkna med att betala returfrakten. Vad som gäller och undantagen finns under <a href=\"#lagar\">Lagar &amp; rättigheter</a>."]},
+   {ic:"i-info", h:"Cookies", p:["Små filer som sajter lägger i din dator för att känna igen dig och visa riktad reklam. Enligt lagen om elektronisk kommunikation måste sajten <b>informera</b>, och du kan tacka nej."]}
   ],
-  remember:"Ångerrätt = <b>14 dagar</b> när du handlar av ett <b>företag</b> på distans. Meddela företaget innan du skickar tillbaka.",
-  diagram:"anger",
+  remember:"Betala helst med <b>faktura</b>. Kolla https, adress och varningslistan. Extremt billigt = bluff.",
+  diagram:["betalsatt"],
   qs:[
    {n:6, q:"Ge sex förslag på betalmetoder när du handlar på internet.", a:"Faktura, direktbetalning, postförskott, betalningsförmedlare, Swish och kreditbetalning.", keys:["faktura","direktbetalning","postförskott","betalningsförmedlare","Swish","kredit"]},
    {n:"c", c:true, q:"Du hittar en X-box på nätet för 3 350 kr som du beställer. Samma dag som du hämtar paketet, utan att ens ha packat upp det, erbjuder din kompis Samir sin årsgamla X-box för 1 700 kr.", sub:"Har du ångerrätt? Motivera.", a:"Ja. 14 dagars ångerrätt gäller när man köper något på nätet av ett företag. Jag måste meddela företaget att jag ångrar köpet, och jag kan få betala frakten tillbaka. Jag har rätt att öppna varan och titta på den, men den ska packas ihop som när jag fick den. Har det gått mer än 14 dagar kan det vara svårare att lämna tillbaka.", law:"Distansavtalslagen – 14 dagars ångerrätt", keys:["ja","14 dagar","nätköp av företag","meddela företaget","ev. returfrakt"]},
@@ -327,17 +376,14 @@ const AREAS = [
   blurb:"Öppet köp, bytesrätt, ångerrätt och de tre lagarna.",
   intro:"\"Kunden har alltid rätt\" stämmer bara delvis. Men tre lagar skyddar dig – och det är stor skillnad på vad butiken erbjuder frivilligt och vad lagen ger dig.",
   facts:[
-   {ic:"i-undo", h:"Öppet köp (frivilligt)", p:["Du får lämna tillbaka en <b>oanvänd</b> vara med kvitto inom viss tid och få <b>pengarna tillbaka</b>. Ingen lag ger rätt till öppet köp – butiken väljer. På kvittot ska det stå \"öppet köp\" och sista datum."]},
-   {ic:"i-swap", h:"Bytesrätt (frivilligt)", p:["Vanligt i butiker utan öppet köp. Du får <b>byta</b> en oanvänd vara mot en annan eller få <b>tillgodokvitto</b> – men <b>inte pengarna tillbaka</b>. Kvitto krävs. Reavaror byts ofta inte, men du får alltid klaga på fel."]},
-   {ic:"i-clock", h:"Ångerrätt (lag)", p:["14 dagar vid köp på distans eller utanför affärslokal. Gäller <b>inte</b>: transporter och boende, kultur- och idrottsevenemang, livsmedel, lösnummer av tidningar, lotterier, plomberade varor som öppnats, eller köp under 400 kr utanför affärslokal."]},
-   {ic:"i-cart", h:"Konsumentköplagen", p:["Gäller när du köper <b>varor av ett företag</b> – även secondhand och rea. Du får <b>avbeställa</b> innan leverans (säljaren kan kräva ersättning för t.ex. frakt). Kommer varan <b>för sent</b> får du avbeställa gratis och kan begära skadestånd.","Fel på varan: <b>reklamera inom 3 år</b>. Säljaren får <b>först laga</b> eller ge en likvärdig vara. Fel inom 6 månader räknas som ursprungligt fel. Gäller inte om du själv orsakat skadan."]},
-   {ic:"i-tool", h:"Konsumenttjänstlagen", p:["Gäller när ett företag gör ett <b>arbete</b> åt dig: reparation av cykel, dator, mobil, bil, tv; arbete på fastighet; förvaring. <b>Ungefärligt pris</b> får överskridas med högst <b>15 %</b>. <b>Fast pris</b> gäller. Felaktig tjänst: håll inne betalning, prisavdrag, ibland skadestånd.","Gäller <b>inte</b>: frisör och skönhetsbehandling, tillverkning av saker, transporter som möbelflytt."]},
-   {ic:"i-people", h:"Privatköp = köplagen", p:["Köper du av en <b>privatperson</b> gäller inte konsumentlagarna, utan <b>köplagen</b>. Det ni skrivit i köpeavtalet gäller. Du har <b>undersökningsplikt</b> och ingen ångerrätt. Tvist: tingsrätten – det kostar."]},
-   {ic:"i-law", h:"Andra lagar att känna till", p:["<b>Konsumentkreditlagen</b>: effektiv ränta ska anges, kreditavtal kan ångras i 14 dagar. <b>Avtalsvillkorslagen</b>: 18 år för avtal; skydd mot oskäliga villkor. <b>Prisinformationslagen</b>: tydliga priser inkl. moms – priset i kassan gäller. <b>Marknadsföringslagen</b>: reklam ska tala sanning; \"rea\" och \"utförsäljning\" får bara användas på riktigt. <b>Produktsäkerhetslagen</b>: farliga varor ska återkallas."]},
-   {ic:"i-receipt", h:"Spara köpehandlingar", p:["Spara kvitton, mejl, köpeavtal och garantibevis i <b>minst 3 år</b> – så länge du kan reklamera. Dyrare saker: ännu längre."]}
+   {ic:"i-cart", h:"Konsumentköplagen – varor", p:["Gäller när du köper <b>varor av ett företag</b>, även rea och secondhand. Du får <b>avbeställa</b> före leverans (säljaren kan ta betalt för t.ex. frakt); kommer varan <b>för sent</b> avbeställer du gratis och kan begära skadestånd. Fel: <b>reklamera inom 3 år</b> – säljaren får <b>först laga</b> eller byta; fel inom <b>6 månader</b> räknas som ursprungligt. Gäller inte eget slarv. Spara kvitton i minst 3 år."]},
+   {ic:"i-tool", h:"Konsumenttjänstlagen – arbete", p:["Gäller när ett företag gör ett <b>arbete</b> åt dig: reparation av cykel, dator, mobil, bil, tv; arbete på fastighet; förvaring. <b>Ungefärligt pris</b> får överskridas med högst <b>15 %</b>; <b>fast pris</b> gäller. Felaktig tjänst: håll inne betalning, prisavdrag, ibland skadestånd. Gäller <b>inte</b> frisör, skönhetsbehandling, tillverkning eller möbelflytt."]},
+   {ic:"i-undo", h:"Distansavtalslagen – på distans", p:["Gäller köp via nätet, telefon, tv-shop, hemförsäljning och homeparty. Ger <b>14 dagars ångerrätt</b> – men inte alltid, se tabellen och listan nedan."]},
+   {ic:"i-people", h:"Privatköp = köplagen", p:["Köper du av en <b>privatperson</b> gäller inte konsumentlagarna. Köpeavtalet styr, du har <b>undersökningsplikt</b> och ingen ångerrätt. Tvist avgörs i tingsrätten – det kostar."]},
+   {ic:"i-law", h:"Andra lagar", p:["<b>Avtalsvillkorslagen</b>: 18 år för avtal, skydd mot oskäliga villkor. <b>Prisinformationslagen</b>: tydliga priser inkl. moms – priset i kassan gäller. <b>Marknadsföringslagen</b>: reklam ska tala sanning; \"rea\" och \"utförsäljning\" bara på riktigt. <b>Konsumentkreditlagen</b>: effektiv ränta ska anges, kreditavtal kan ångras i 14 dagar. <b>Produktsäkerhetslagen</b>: farliga varor återkallas."]}
   ],
-  remember:"Öppet köp och bytesrätt bestämmer <b>butiken</b>. Ångerrätt (14 dagar) och reklamationsrätt (3 år) ger <b>lagen</b>.",
-  diagram:"vilkenlag",
+  remember:"Öppet köp och bytesrätt väljer <b>butiken</b>. Ångerrätt (14 dagar) och reklamationsrätt (3 år) ger <b>lagen</b>. Privatköp = köplagen.",
+  diagram:["jamfor","angerjanej","vilkenlag"],
   qs:[
    {n:7, q:"Förklara skillnaden mellan öppet köp och bytesrätt.", a:"Öppet köp innebär att du får lämna tillbaka en oanvänd vara tillsammans med kvittot inom en viss tid. Du kan få pengarna tillbaka, tillgodokvitto eller byta varan. Bytesrätt brukar finnas i butiker som inte har öppet köp. Då får du inte pengarna tillbaka – du kan bara byta varan. Du måste visa kvitto.", keys:["öppet köp = pengarna tillbaka","bytesrätt = bara byta / tillgodokvitto","oanvänd vara","kvitto"]},
    {n:"a", c:true, q:"Bengt och Sture är grannar. Sture vinner en ny gräsklippare och erbjuder Bengt att köpa den gamla. Bengt köper den. Efter ett par dagar ångrar sig Bengt – han kan köpa en ny billigare.", sub:"Har han rätt att låta köpet gå tillbaka? Motivera.", a:"Nej. När man köper av en privatperson gäller inte konsumentlagarna, utan köplagen. Köplagen gäller om de inte avtalat något annat – man behöver inget skriftligt kontrakt. Är gräsklipparen felfri har Bengt ingen rätt att lämna tillbaka den, och Sture behöver inte gå med på det. Bara om de skrivit i ett avtal att Bengt har ångerrätt kan han kräva det – och då via tingsrätten om Sture vägrar, vilket sällan lönar sig för en gräsklippare.", law:"Köplagen – privatköp, ingen ångerrätt", keys:["privatköp","köplagen, inte konsumentköplagen","ingen ångerrätt","avtalet gäller"]},
@@ -357,15 +403,12 @@ const AREAS = [
   blurb:"Reklamera, Hallå konsument, konsumentvägledare och ARN.",
   intro:"Är du missnöjd med en vara eller tjänst ska du reklamera så snart som möjligt. Det finns en tydlig trappa att följa.",
   facts:[
-   {ic:"i-receipt", h:"Reklamera = klaga på fel", p:["Du berättar för säljaren att det är fel på varan. Du har rätt att reklamera i <b>3 år</b> från köpet. Du kan inte <b>kräva</b> ny vara eller pengarna tillbaka direkt – säljaren får först försöka laga eller byta."]},
-   {ic:"i-steps", h:"Trappan", p:["<b>1.</b> Gå till butiken och försök komma överens. <b>2.</b> Ta hjälp av <b>Hallå konsument</b> (klagoguiden). <b>3.</b> Kontakta kommunens <b>konsumentvägledare</b> eller en konsumentbyrå. <b>4.</b> Anmäl till <b>ARN</b>, Allmänna reklamationsnämnden."]},
-   {ic:"i-scale", h:"ARN", p:["Opartisk nämnd som prövar tvister mellan konsument och företag. ARN ger en <b>rekommendation</b> om hur tvisten bör lösas. Kostar inget. Privatköp prövas inte av ARN – då är det tingsrätten."]},
-   {ic:"i-info", h:"Konsumentverket", p:["Myndigheten som jobbar för att vi ska göra medvetna val och inte råka illa ut. Chefen är <b>Konsumentombudsmannen (KO)</b>. Här finns Hallå konsument, Konsument Europa (köp inom EU) och <b>varningslistan</b> över oseriösa företag."]},
-   {ic:"i-people", h:"Konsumentbyråerna", p:["Gratis råd inom telefoni, tv, internet, energi, bank och försäkring: Konsumenternas bank- och finansbyrå, försäkringsbyrå, Energimarknadsbyrån, Telekområdgivarna."]},
+   {ic:"i-receipt", h:"Så reklamerar du", p:["Gå till säljaren <b>så snart du märker felet</b>, med kvitto, och berätta vad som är fel. Säljaren får först försöka laga eller byta – du kan inte kräva pengarna tillbaka direkt. Är det en tjänst: håll inne betalningen tills felet är åtgärdat."]},
+   {ic:"i-steps", h:"Kommer ni inte överens – fyra steg", p:["<b>1.</b> Butiken. <b>2.</b> Hallå konsument (klagoguiden). <b>3.</b> Kommunens konsumentvägledare eller en konsumentbyrå. <b>4.</b> ARN. Vem som gör vad ser du nedan."]},
    {ic:"i-bulb", h:"Två riktiga fall", p:["<b>Kalle</b> hyrde skidor som bröts i ett gupp. Uthyraren krävde 1 500 kr för \"vårdslös\" åkning. ARN höll med Kalle – olyckshändelse – och han fick pengarna tillbaka.","<b>Melissa</b> var missnöjd med sin ögonbrynstatuering. ARN avslog, eftersom hon inte kunde visa att den var felaktigt gjord (och skönhetsbehandlingar omfattas normalt inte av konsumenttjänstlagen)."]}
   ],
-  remember:"Butiken → Hallå konsument → konsumentvägledaren → <b>ARN</b>. Reklamera inom <b>3 år</b>, så snart du märker felet.",
-  diagram:"trappa",
+  remember:"Butiken → Hallå konsument → konsumentvägledaren → <b>ARN</b>. Reklamera så snart du märker felet.",
+  diagram:["vemgorvad"],
   qs:[
    {n:8, q:"Varifrån kan du få råd i konsumentfrågor (konsumentinformation)?", a:"Konsumentverket. Där finns också Hallå konsument och Konsument Europa. Dessutom kommunens konsumentvägledare och konsumentbyråerna (bank, försäkring, energi, telekom).", keys:["Konsumentverket","Hallå konsument","konsumentvägledare","konsumentbyråer"]},
    {n:9, q:"Beskriv vad du ska göra om du märker att det är fel på en vara som du har köpt. Vilka regler gäller?", a:"Reklamera så snart som möjligt: gå till butiken med kvittot och berätta vad som är fel. Enligt konsumentköplagen har du rätt att reklamera i 3 år. Säljaren har rätt att först försöka laga varan eller ge en likvärdig – går inte det kan du kräva prisavdrag eller pengarna tillbaka. Fel som visar sig inom 6 månader räknas som ursprungligt fel. Lagen gäller inte om du själv orsakat skadan. Kommer ni inte överens: Hallå konsument → konsumentvägledaren → ARN.", law:"Konsumentköplagen – 3 års reklamationsrätt", keys:["reklamera snarast","kvitto","3 år","säljaren får först laga","ARN om ni inte kommer överens"], obs:"Denna fråga saknar svar i lärarens presentation. Svaret ovan bygger på genomgången och boken s. 136–137 och 142."},
@@ -423,26 +466,43 @@ const NAVY="#1F3A5F", OR="#E8762B", ICE="#DCEBF7", OK="#2E8B57", NO="#C0392B";
 function txt(x,y,s,o={}){return `<text x="${x}" y="${y}" font-size="${o.fs||14}" font-weight="${o.fw||700}" fill="${o.fill||'currentColor'}" text-anchor="${o.ta||'start'}" font-family="Nunito,sans-serif">${s}</text>`}
 
 const DIAGRAMS = {
- smakop(){ // Så mycket kostar småköp under ett år (Konsumentverket, via boken s.116)
-  const rows=[["Läsk – 1 st per dag à 10 kr",3650],["Fika på stan – 1 gång i veckan à 50 kr",2600],["Chips – 2 påsar i veckan à 20 kr",2080],["Glasspinne – 1 per dag juli–augusti à 15 kr",1380],["Tidning – 2 st i månaden à 50 kr",1200],["Lösgodis – 3 hg i veckan à 6 kr",936]];
-  const h=`<div class="hbars">`+rows.map(([n,v],i)=>`<div class="r ${i===0?'top':''}"><span>${n}</span><span class="v">${v.toLocaleString('sv-SE')} kr/år</span><div class="b" style="width:${Math.round(100*v/3650)}%"></div></div>`).join("")+`</div>`;
-  return {h:"Så mycket kostar småköp på ett år",svg:h,cap:"Rörliga utgifter som blir stora belopp på ett år. Källa: Konsumentverket \"Koll på pengarna\" 2016 (boken s. 116)."}},
- kredit(){ // 20 000 lån + 18 829 kostnad = 38 829
+ budgetkassa(){
+  const h=`<div class="vs"><div class="vs-a"><span class="pill">FÖRE</span><h4>Budget</h4><p>Planen. Du skriver upp vilka <b>inkomster</b> och <b>utgifter</b> du räknar med under t.ex. en månad.</p></div><div class="vs-mid">${I("i-swap")}</div><div class="vs-b"><span class="pill">EFTER</span><h4>Kassabok</h4><p>Facit. Du skriver upp allt du får in och lägger ut <b>efter hand</b> (spara kvitton!) – då ser du vart pengarna tog vägen och om budgeten höll.</p></div></div>`;
+  return {h:"Två hjälpmedel: budget och kassabok",svg:h,cap:""}},
+ smakop(){
+  const rows=[["Läsk eller energidryck – 1 st per dag à 22 kr",8030],["Snabbmat – 1 gång i veckan à 120 kr",6240],["Fika på stan – 1 gång i veckan à 70 kr",3640],["Chips – 2 påsar i veckan à 30 kr",3120],["Lösgodis – 3 hg i veckan à 10 kr",1560],["Glass – 1 per dag i juli–augusti à 25 kr",1550]];
+  const max=rows[0][1];
+  const h=`<div class="hbars">`+rows.map(([n,v],i)=>`<div class="r ${i===0?'top':''}"><span>${n}</span><span class="v">${v.toLocaleString('sv-SE')} kr/år</span><div class="b" style="width:${Math.round(100*v/max)}%"></div></div>`).join("")+`</div>`;
+  return {h:"Så mycket kostar småköp på ett år",svg:h,cap:"Rörliga utgifter som blir stora belopp på ett år. Ungefärliga priser 2026 – bokens tabell från 2016 räknade med läsk för 10 kr och godis för 6 kr/hg."}},
+ kredit(){
   const h=`<div class="kredit"><div><div class="stack"><div class="cost">Kreditkostnad<br>18 829 kr</div><div class="loan">Lån<br>20 000 kr</div></div><p>Totalt 38 829 kr</p></div>
   <div class="txt"><p><b>Datorn kostar 20 000 kr.</b> Du betalar 647 kr i månaden i 5 år – 60 betalningar.</p><p class="big">Effektiv ränta: 34,49 %</p><p>Kontant hade du sparat 18 829 kr.</p><p class="warn">Snabblån och sms-lån: ofta flera hundra procent.</p></div></div>`;
   return {h:"Kreditköpet som kostade nästan dubbelt",svg:h,cap:"Exempel från boken s. 120 (\"Koll på pengarna\" 2016)."}},
- sjalvrisk(){
-  const h=`<p style="font-weight:600">En skada på mobilen – vem betalar?</p><div class="split"><div class="me">Självrisk – du</div><div class="co">Resten – försäkringsbolaget</div></div><p style="font-size:14px">Åldersavdrag: är saken gammal får du mindre i ersättning.</p>`;
-  return {h:"Självrisken",svg:h,cap:""}},
- anger(){
-  const W=640,H=200; let s=`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Ångerrättens 14 dagar">`;
-  s+=`<line x1="40" y1="70" x2="600" y2="70" stroke="${NAVY}" stroke-width="3"/>`;
-  for(let d=0;d<=14;d++){const x=40+d*40;s+=`<line x1="${x}" y1="62" x2="${x}" y2="78" stroke="${NAVY}" stroke-width="2"/>`;if(d%7===0||d===14)s+=txt(x,100,"dag "+d,{ta:'middle',fs:12,fw:600});}
-  s+=`<rect x="40" y="40" width="560" height="22" rx="6" fill="${OK}" opacity=".85"/>`+txt(320,56,"Du kan ångra köpet – meddela företaget",{ta:'middle',fs:13,fill:'#fff'});
-  s+=`<circle cx="40" cy="70" r="7" fill="${OR}" stroke="${NAVY}" stroke-width="2"/>`+txt(40,130,"Du får varan",{ta:'middle',fs:12,fw:600});
-  s+=`<circle cx="600" cy="70" r="7" fill="${NO}" stroke="${NAVY}" stroke-width="2"/>`+txt(600,130,"Ångerrätten slut",{ta:'middle',fs:12,fw:600});
-  s+=txt(320,170,"Gäller köp av företag på distans eller utanför affärslokal. Inte under 400 kr utanför affärslokal.",{ta:'middle',fs:12,fw:600});
-  return {h:"Ångerrätt – 14 dagar",svg:s+"</svg>",cap:""}},
+ skuld(){
+  const steps=[["Skulden",100,"100 kr du inte betalar"],["Påminnelse",60,"säljaren skickar en skriftlig påminnelse"],["Inkasso",180,"ett inkassobolag driver in skulden"],["Kronofogden",300,"betalningsföreläggande"],["Ombudsarvode",340,"inkassobolagets avgift"],["Utmätning",600,"Kronofogden tar av lön, bankmedel eller saker"]];
+  let sum=0; const h=`<div class="skuld">`+steps.map(([n,v,d],i)=>{sum+=v;return `<div class="st"><div class="st-h"><b>${n}</b><span>${i?'+':''}${v} kr</span></div><div class="st-bar"><i style="width:${Math.round(100*sum/1580)}%"></i></div><small>${d} · totalt ${sum.toLocaleString('sv-SE')} kr</small></div>`}).join("")+`</div><p class="skuld-sum">100 kr blev <b>1 580 kr</b> + ränta – och en betalningsanmärkning i 3 år.</p>`;
+  return {h:"Skuldfällan – så växer 100 kr",svg:h,cap:"Boken s. 121."}},
+ vilkenforsakring(){
+  const rows=[["i-phone","Du tappar din mobil i golvet","Allrisk / drulle","tillägg till hemförsäkringen, självrisk dras"],["i-bike","Din cykel blir stulen","Hemförsäkringen","cykeln ingår ofta – självrisk och åldersavdrag"],["i-tv","Tv:n slutar fungera av sig själv efter ett år","Reklamationsrätten","ingen försäkring behövs – lagen ger 3 år"],["i-camera","Du har sönder kompisens kamera","Ansvarsskyddet","i din hemförsäkring – fall h på provet"]];
+  const h=`<div class="matrix">`+rows.map(([ic,s,a,d])=>`<div class="mrow"><div class="ic">${I(ic)}</div><div class="ms">${s}</div><div class="ma"><b>${a}</b><span>${d}</span></div></div>`).join("")+`</div>`;
+  return {h:"Vilken försäkring hjälper?",svg:h,cap:""}},
+ betalsatt(){
+  const pay=[["i-receipt","Faktura","Du betalar när du fått och kollat varan.","Säkrast","ok"],["i-hand","Betalningsförmedlare","Klarna, PayPal, Payson släpper pengarna till säljaren först när du fått varan.","Säkert","ok"],["i-box","Postförskott","Du betalar när du hämtar paketet – utan att veta vad som ligger i.","Bra hos seriösa företag","mid"],["i-bank","Direktbetalning","Banken betalar direkt från ditt konto, med bankens säkerhet.","Bra","mid"],["i-mobile","Swish","Snabbt – men pengarna går direkt och är svåra att få tillbaka.","Bara till seriösa","mid"],["i-card","Kort / kredit","Visa, Mastercard. Kräv https och 3D Secure. Aldrig kortnummer i e-post.","Var försiktig","no"]];
+  const h=`<div class="pay">`+pay.map(([ic,n,d,b,c])=>`<div class="ptile"><div class="ic">${I(ic)}</div><h4>${n}</h4><p>${d}</p><span class="badge ${c}">${b}</span></div>`).join("")+`</div>`;
+  return {h:"Sex sätt att betala på nätet – från säkrast",svg:h,cap:"Provfråga 6 vill ha de sex namnen. Var misstänksam mot företag som bara erbjuder förskottsbetalning."}},
+ jamfor(){
+  const h=`<div class="tblwrap"><table class="cmp"><thead><tr><th></th><th>Öppet köp</th><th>Bytesrätt</th><th>Ångerrätt</th></tr></thead><tbody>
+  <tr><th>Vem bestämmer?</th><td>Butiken – frivilligt</td><td>Butiken – frivilligt</td><td><b>Lagen</b> (distansavtalslagen)</td></tr>
+  <tr><th>Var gäller det?</th><td>I butik, om det står på kvittot</td><td>I butik, ofta där öppet köp saknas</td><td>Nätet, telefon, tv-shop, hemförsäljning</td></tr>
+  <tr><th>Får du pengarna tillbaka?</th><td class="y">Ja</td><td class="n">Nej – byte eller tillgodokvitto</td><td class="y">Ja</td></tr>
+  <tr><th>Hur lång tid?</th><td>Den tid butiken anger</td><td>Avtalad tid</td><td>14 dagar</td></tr>
+  <tr><th>Krav</th><td>Oanvänd vara + kvitto</td><td>Oanvänd vara + kvitto</td><td>Meddela företaget; ev. returfrakt</td></tr>
+  <tr><th>Reavaror?</th><td colspan="2">Ofta undantagna – fråga i butiken. Fel får du alltid reklamera.</td><td>Ja, samma regler</td></tr>
+  </tbody></table></div>`;
+  return {h:"Öppet köp, bytesrätt eller ångerrätt?",svg:h,cap:"Provfråga 7: skillnaden mellan öppet köp och bytesrätt."}},
+ angerjanej(){
+  const h=`<div class="list2"><div class="yes"><h3>${I("i-check")}Du har ångerrätt (14 dagar)</h3><ul><li>Köp på nätet, via telefon eller tv-shop</li><li>Hemförsäljning, homeparty, mässa – om varan kostar 400 kr eller mer</li><li>Varan får vara öppnad och tittad på</li><li>Kreditavtal (konsumentkreditlagen)</li></ul></div><div class="no"><h3>${I("i-cross")}Du har inte ångerrätt</h3><ul><li>Köp i vanlig butik (bara öppet köp/bytesrätt om butiken erbjuder)</li><li>Köp av privatperson</li><li>Under 400 kr utanför säljarens butik</li><li>Resor, boende, konsert- och idrottsbiljetter</li><li>Livsmedel, lösnummer av tidningar, lotter</li><li>Plomberade varor som brutits</li></ul></div></div>`;
+  return {h:"När gäller ångerrätten?",svg:h,cap:""}},
  vilkenlag(){
   const W=680,H=300; let s=`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Vilken lag gäller">`;
   const box=(x,y,w,h,t1,t2,fill)=>`<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="10" fill="${fill}" stroke="${NAVY}" stroke-width="2"/>`+txt(x+w/2,y+(t2?22:h/2+5),t1,{ta:'middle',fs:13,fw:800,fill:fill===NAVY?'#fff':'currentColor'})+(t2?txt(x+w/2,y+42,t2,{ta:'middle',fs:12,fw:600,fill:fill===NAVY?'#fff':'currentColor'}):"");
@@ -460,12 +520,10 @@ const DIAGRAMS = {
   s+=box(240,230,200,56,"Konsumenttjänstlagen","max 15 % över pris",ICE);
   s+=box(470,230,200,56,"Distansavtalslagen","ångra i 14 dagar",ICE);
   return {h:"Vilken lag gäller?",svg:s+"</svg>",cap:"E-handelslagen gäller dessutom vid alla köp på en webbplats."}},
- trappa(){
-  const W=640,H=230; let s=`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Reklamationstrappan">`;
-  const steps=[["1. Butiken","försök komma överens"],["2. Hallå konsument","klagoguiden"],["3. Konsumentvägledare","kommunen / byråerna"],["4. ARN","prövar och rekommenderar"]];
-  steps.forEach((st,i)=>{const x=20+i*155,y=170-i*45,h=40+i*45;s+=`<rect x="${x}" y="${y}" width="150" height="${h}" rx="8" fill="${i===3?OR:ICE}" stroke="${NAVY}" stroke-width="2"/>`;s+=txt(x+75,y+22,st[0],{ta:'middle',fs:13,fw:800,fill:i===3?'#fff':'currentColor'});s+=txt(x+75,y+40,st[1],{ta:'middle',fs:11,fw:600,fill:i===3?'#fff':'currentColor'});});
-  s+=txt(320,225,"Privatköp går inte till ARN – då är det tingsrätten.",{ta:'middle',fs:12,fw:600});
-  return {h:"Reklamationstrappan",svg:s+"</svg>",cap:""}}
+ vemgorvad(){
+  const org=[["i-info","Konsumentverket","Myndigheten. Chefen är Konsumentombudsmannen, KO. Har varningslistan och Konsument Europa (köp inom EU)."],["i-bulb","Hallå konsument","Konsumentverkets upplysningstjänst. Klagoguiden hjälper dig skriva till företaget."],["i-people","Konsumentvägledaren","Finns i kommunen. Hjälper dig före och efter ett köp – rättigheter, avtal, hur du klagar."],["i-bank","Konsumentbyråerna","Gratis råd om bank, försäkring, energi och telekom."],["i-scale","ARN","Allmänna reklamationsnämnden. Opartisk, gratis, ger en rekommendation. Inte för privatköp."],["i-law","Tingsrätten","Dit går tvister vid privatköp. Kostar – förloraren kan få betala båda sidors kostnader."]];
+  const h=`<div class="orgs">`+org.map(([ic,n,d])=>`<div class="org"><div class="ic">${I(ic)}</div><div><h4>${n}</h4><p>${d}</p></div></div>`).join("")+`</div>`;
+  return {h:"Vem gör vad?",svg:h,cap:"Provfråga 8: varifrån får du råd i konsumentfrågor?"}}
 };
 
 /* ---------- STATE ---------- */
@@ -508,7 +566,7 @@ function renderStart(){
 
 function renderArea(a, tab){
   const p=progress(a);
-  const d=DIAGRAMS[a.diagram]&&DIAGRAMS[a.diagram]();
+  const ds=(Array.isArray(a.diagram)?a.diagram:[a.diagram]).filter(k=>DIAGRAMS[k]).map(k=>DIAGRAMS[k]());
   app.innerHTML=`
   <section class="area-head">
     <div><p class="eyebrow">Område ${AREAS.indexOf(a)+1} av 6</p><h1>${a.name}</h1><p>${a.intro}</p></div>
@@ -524,7 +582,7 @@ function renderArea(a, tab){
   const panel=document.getElementById("panel");
   if(tab==="lar"){
     panel.innerHTML=`<div class="facts">${a.facts.map(f=>`<div class="fact"><div class="ic">${I(f.ic)}</div><div style="min-width:0"><h3>${f.h}</h3>${f.p.map(x=>`<p>${x}</p>`).join("")}</div></div>`).join("")}</div>
-    ${d?`<div class="diagram"><h3>${d.h}</h3>${d.svg}${d.cap?`<p class="cap">${d.cap}</p>`:""}</div>`:""}
+    ${ds.map(d=>`<div class="diagram"><h3>${d.h}</h3>${d.svg}${d.cap?`<p class="cap">${d.cap}</p>`:""}</div>`).join("")}
     <div class="remember">${I("i-bulb")}<div><span class="lbl">Kom ihåg</span>${a.remember}</div></div>
     <p style="margin-top:18px"><button class="btn primary" id="gotrain">Träna på frågorna →</button></p>`;
     document.getElementById("gotrain").addEventListener("click",()=>{renderArea(a,"trana");window.scrollTo({top:0})});
