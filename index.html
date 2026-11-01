@@ -79,9 +79,14 @@ img{max-width:100%;height:auto;display:block}
 .numbers .row{display:grid;grid-template-columns:repeat(6,1fr);gap:10px}
 @media (max-width:860px){.numbers .row{grid-template-columns:repeat(3,1fr)}}
 @media (max-width:480px){.numbers .row{grid-template-columns:repeat(2,1fr)}}
-.num{background:rgba(255,255,255,.10);border-radius:12px;padding:12px 10px;text-align:center;min-width:0}
+.numhint{font-size:14px;opacity:.85;margin-bottom:12px}
+.num{background:rgba(255,255,255,.10);border:2px solid transparent;border-radius:12px;padding:12px 10px;text-align:center;min-width:0;color:#fff;font-family:inherit}
+.num.on{background:rgba(255,255,255,.18);border-color:#FFB071}
 .num b{display:block;font-size:clamp(22px,2.6vw,28px);font-weight:900;color:#FFB071;font-variant-numeric:tabular-nums;line-height:1.05;white-space:nowrap}
 .num span{font-size:13px;opacity:.9}
+.numx{margin-top:14px;background:rgba(255,255,255,.10);border-radius:12px;padding:14px 16px;font-size:15.5px;line-height:1.5}
+.numx b{display:block;font-size:18px;color:#FFB071;margin-bottom:4px}
+.numx .ex{margin-top:8px;font-size:14px;opacity:.9;font-style:italic}
 
 /* Område */
 .area-head{display:grid;grid-template-columns:1fr 1.1fr;gap:24px;align-items:center;padding-block:24px 8px}
@@ -380,6 +385,15 @@ const AREAS = [
   ]}
 ];
 
+const NUMBERS = [
+ {n:"18 år", t:"myndig", h:"då får du ingå avtal", p:"Du måste ha fyllt 18 år för att ingå köpeavtal, låna pengar och handla på kredit. Ett avtal med någon under 18 år är ogiltigt – föräldrarna kan häva köpet. Jobbar du extra från 16 år får du själv bestämma över de pengarna, men du måste betala kontant.", ex:"Exempel: Vill du beställa på nätet innan du fyllt 18 måste en förälder godkänna köpet."},
+ {n:"14 dagar", t:"ångerrätt", h:"så länge får du ångra ett distansköp", p:"Handlar du av ett företag på nätet, via telefon, tv-shop eller hemförsäljning har du rätt att ångra köpet inom 14 dagar. Du måste meddela företaget, och kan få betala returfrakten. Gäller inte när du handlar i en vanlig butik, och inte vid köp av privatperson.", ex:"Exempel: X-boxen du beställde på nätet (fall c) – ja, du kan ångra dig inom 14 dagar."},
+ {n:"400 kr", t:"gräns för ångerrätt", h:"under det ingen ångerrätt utanför butik", p:"Köper du något som kostar mindre än 400 kr utanför säljarens affärslokal – av en hemförsäljare, på ett torg, en mässa eller ett homeparty – har du ingen ångerrätt. Kostar varan 400 kr eller mer gäller de 14 dagarna.", ex:"Exempel: Kokboken för 395 kr från hemförsäljaren (fall e) – nej, ingen ångerrätt. Tvättmedlet för 400 kr (fall g) – ja, om förpackningen är obruten."},
+ {n:"15 %", t:"ungefärligt pris", h:"så mycket dyrare får en tjänst bli", p:"Får du ett ungefärligt pris av t.ex. en reparatör får slutpriset bli högst 15 % högre. Har du fått ett fast pris gäller bara det. Det står i konsumenttjänstlagen – be alltid om priset skriftligt.", ex:"Exempel: Astas reparation (fall f) – ungefär 800 kr betyder max 920 kr, inte 1 200 kr."},
+ {n:"3 år", t:"reklamationsrätt", h:"så länge får du klaga på fel", p:"Enligt konsumentköplagen får du reklamera – klaga på ett fel – i 3 år efter köpet, även på reavaror och secondhand. Spara därför kvitton och köpehandlingar i minst 3 år. Säljaren får först försöka laga eller byta. Samma siffra gäller en betalningsanmärkning: den finns kvar i 3 år.", ex:"Exempel: Sebastians stövlar med spricka (fall d) – han får reklamera fast de var på rea."},
+ {n:"6 mån", t:"ursprungligt fel", h:"fel inom sex månader är säljarens ansvar", p:"Visar sig ett fel inom sex månader efter köpet räknas det som ett ursprungligt fel – alltså att det fanns redan när du köpte varan – och säljaren ansvarar. Efter sex månader kan du behöva visa att felet fanns från början. Gäller inte om du själv orsakat skadan.", ex:"Exempel: En mobil som slutar fungera efter fyra månader – felet räknas som ursprungligt, du reklamerar och säljaren får laga."}
+];
+
 const TERMS = [
  ["Avbetalning","Man betalar varan i mindre delbetalningar. Blir oftast dyrare eftersom ränta och avgifter tillkommer."],
  ["ARN","Allmänna reklamationsnämnden. Opartisk nämnd som prövar tvister mellan konsument och företag och ger en rekommendation."],
@@ -491,15 +505,13 @@ function renderStart(){
     <img src="img/karta.jpg" alt="Karta över de sex områdena: pengarna, låna, försäkring, handla på nätet, lagar, när det blir fel" width="1376" height="768">
   </section>
   <div class="grid">${AREAS.map(a=>{const p=progress(a);return `<a class="area-card" href="#${a.id}"><div class="ic">${I(a.icon)}</div><h3>${a.name}</h3><p>${a.blurb}</p><div class="prog"><div class="bar"><i style="width:${p.pct}%"></i></div><span>${p.d}/${p.t} frågor</span></div></a>`}).join("")}</div>
-  <section class="numbers"><h2>Siffrorna du måste kunna</h2><div class="row">
-    <div class="num"><b>18 år</b><span>för att låna och ingå avtal</span></div>
-    <div class="num"><b>14 dagar</b><span>ångerrätt vid distansköp</span></div>
-    <div class="num"><b>400 kr</b><span>under det: ingen ångerrätt utanför butik</span></div>
-    <div class="num"><b>15 %</b><span>max över ungefärligt pris</span></div>
-    <div class="num"><b>3 år</b><span>reklamationsrätt – spara kvittot</span></div>
-    <div class="num"><b>6 mån</b><span>fel inom: räknas som ursprungligt</span></div>
-  </div></section>
+  <section class="numbers"><h2>Siffrorna du måste kunna</h2><p class="numhint">Tryck på en siffra för att se vad den betyder.</p><div class="row" id="numrow">
+    ${NUMBERS.map((n,i)=>`<button class="num ${i===0?'on':''}" data-i="${i}"><b>${n.n}</b><span>${n.t}</span></button>`).join("")}
+  </div><div class="numx" id="numx"></div></section>
   <p class="foot">Innehållet bygger på lärarens genomgång och frågor inför provet samt läroboken i hem- och konsumentkunskap. Facit följer lärarens svar; där boken säger mer står det under "Obs".</p>`;
+  const showNum=(i)=>{const n=NUMBERS[i];document.getElementById("numx").innerHTML=`<b>${n.n} – ${n.h}</b><p>${n.p}</p><p class="ex">${n.ex}</p>`;document.querySelectorAll("#numrow .num").forEach(b=>b.classList.toggle("on",+b.dataset.i===i));};
+  document.querySelectorAll("#numrow .num").forEach(b=>b.addEventListener("click",()=>showNum(+b.dataset.i)));
+  showNum(0);
 }
 
 function renderArea(a, tab){
